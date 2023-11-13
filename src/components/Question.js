@@ -1,9 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { unmountComponentAtNode } from "react-dom";
 
 function Question({ question, onAnswered }) {
   const [timeRemaining, setTimeRemaining] = useState(10);
 
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setCount((count) => count + 1);
+  //   }, 1000);
+  // });
   // add useEffect code
+  useEffect(()=>
+  {
+    const countSconds=setTimeout(() => 
+    {
+      setTimeRemaining(timeRemaining => timeRemaining - 1)
+    }, 1000);
+
+    if(timeRemaining === 0)
+    {
+      setTimeRemaining(10)
+      onAnswered(false)
+    }
+
+    return function unmount()
+    {
+      clearTimeout(countSconds)
+    }
+
+    
+  },[timeRemaining, onAnswered])
 
   function handleAnswer(isCorrect) {
     setTimeRemaining(10);
