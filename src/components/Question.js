@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { unmountComponentAtNode } from "react-dom";
 
 function Question({ question, onAnswered }) {
   const [timeRemaining, setTimeRemaining] = useState(10);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setCount((count) => count + 1);
-  //   }, 1000);
-  // });
   // add useEffect code
   useEffect(()=>
   {
